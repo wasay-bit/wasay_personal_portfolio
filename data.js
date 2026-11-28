@@ -31,7 +31,7 @@ export const profile = {
   ],
   email: "wasayusa@gmail.com",
   linkedin: { label: "linkedin.com/in/wasay-omair", url: "https://www.linkedin.com/in/wasay-omair" },
-  github: { label: "github.com/wasay-bit/wasay_personal_portfolio", url: "https://github.com/wasay-bit/wasay_personal_portfolio" },
+  github: { label: "wasay-bit.github.io/wasay_personal_portfolio", url: "https://wasay-bit.github.io/wasay_personal_portfolio/" },
   current: { role: "EIAM Intern", org: "Cloudflare", logo: "cloudflare" },
   badgeRole: "EIAM Intern",
   badgeStatus: "Access Granted",
