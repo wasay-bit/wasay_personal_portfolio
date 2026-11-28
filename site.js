@@ -1,12 +1,11 @@
 // The portfolio page. client.js hands over to this file's default export.
 
-import { RpcTarget } from "capnweb";
 import { css } from "./styles.js";
 import { css2 } from "./styles2.js";
 import * as data from "./data.js";
 import { h } from "./dom.js";
 import { env, jump, section } from "./kit.js";
-import { hero, showPhoto, showResume, downloadResume } from "./hero.js";
+import { hero, showResume, downloadResume } from "./hero.js";
 import {
   aboutSection,
   experienceSection,
@@ -105,28 +104,6 @@ function trackSection(root, navLinks) {
   window.addEventListener("scroll", schedule, { passive: true });
   window.addEventListener("resize", schedule);
   update();
-}
-
-function showAssets(assets) {
-  showPhoto(assets && assets.photo);
-  showResume(assets && assets.resume);
-}
-
-// Keeps the photo and résumé in step with the server, so a new one shows up without a reload.
-class AssetWatcher extends RpcTarget {
-  constructor(gadget) {
-    super();
-    this.gadget = gadget;
-  }
-
-  update(assets) {
-    showAssets(assets);
-  }
-
-  [Symbol.dispose]() {
-    this.gadget.subscribe(this);
-    this.gadget.getAssets().then(showAssets, () => {});
-  }
 }
 
 const FAVICON_SVG =
@@ -335,7 +312,6 @@ export default {
     if (!isExport) {
       trackSection(page, navLinks);
       if (progressBar) trackProgress(progressBar);
-      gadget.subscribe(new AssetWatcher(gadget));
     }
   },
 };
